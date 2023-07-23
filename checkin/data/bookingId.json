@@ -1,0 +1,17 @@
+[
+    {
+        "bookingCode" :123456 ,
+        "lastName" : "Kala"
+
+    },
+    {
+        "bookingCode" :223456 ,
+        "lastName" : "Kabadwal"
+
+    },
+    {
+        "bookingCode" :323456 ,
+        "lastName" : "Kalia"
+
+    }
+]
