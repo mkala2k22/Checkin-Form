@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CheckinAuthService } from '../service/checkin-auth.service';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
- 
+import { ValidatecheckinService } from '../service/validatecheckin.service';
+import { Apollo } from 'apollo-angular';
+import { GET_BOOKINGCODES } from '../graphql/graphql.queries';
+
 @Component({
-  selector: 'app-checkin',
-  templateUrl: './checkin.component.html',
-  styleUrls: ['./checkin.component.scss']
+  selector: 'app-checkinform',
+  templateUrl: './checkinform.component.html',
+  styleUrls: ['./checkinform.component.css']
 })
-export class CheckinComponent {
+export class CheckinformComponent {
+
 
   bookingCodePattern = "^[a-zA-Z0-9]{6}$";
   lastNamePattern = "^[A-Za-z]+$";
   errorMessage! : string;
   successMessage! : string;
-  content!:any;
+  bookingCodeData: any[] = [];
+  error: any;
 
-  constructor(private builder: FormBuilder, private checkinAuthService:CheckinAuthService){
 
-  }
+  constructor(private builder: FormBuilder, private validatecheckinService:ValidatecheckinService, private apollo: Apollo){}
 
   checkinForm = this.builder.group({
     bookingCode: this.builder.control ('', Validators.compose([Validators.required])),
@@ -41,10 +43,26 @@ get flightNumber() {
 } 
 
 
+
+// Commented due to cors error coming while calling graphql url
+/*
+proceedCheckin() {
+  this.apollo.watchQuery({
+    query: GET_BOOKINGCODES
+  }).valueChanges.subscribe(({ data, error }: any) => {
+    this.bookingCodeData = data.checkinData;
+    this.error = error;
+    console.log('success',this.bookingCodeData);
+    console.log('error',this.error);
+  }
+  );
+}*/
+
+
   proceedCheckin(){
     if (this.checkinForm.valid) {
-      this.checkinAuthService.authenticateCheckin(this.checkinForm.value).subscribe((res)=> {
-        this.content = res;
+      this.validatecheckinService.authenticateCheckin(this.checkinForm.value).subscribe((res)=> {
+        console.log('res',res);
         this.successMessage ='Checked in successfully';
       },(error) =>{
           if(error.status == 400){
@@ -67,4 +85,5 @@ get flightNumber() {
       this.errorMessage = 'Form is not valid.';
     }
   }
+
 }
