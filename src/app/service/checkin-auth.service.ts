@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from '@angular/core';
+import { IcheckinData } from '../model/checkinData';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CheckinAuthService {
+export class ValidatecheckinService {
+
   apiurl='http://localhost:3000/checkin';
 
   constructor(private http:HttpClient) { }
 
   authenticateCheckin(inputdata:any){
-    return this.http.get(this.apiurl);
+    return this.http.get<IcheckinData[]>(this.apiurl);
   }
 }
