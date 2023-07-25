@@ -1,33 +1,33 @@
 
 <form  class="checkin-form" [formGroup]="checkinForm" (ngSubmit)="proceedCheckin()">
-  <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
-  <div class="alert alert-success" *ngIf="successMessage">{{successMessage}}</div>
-    <div class="mb-3">
-        <div *ngIf="checkinForm.controls.bookingCode.invalid && checkinForm.controls.bookingCode.touched">
-            <small *ngIf="checkinForm.controls.bookingCode.errors?.['required']">Booking code is required</small>
-            <small *ngIf="checkinForm.controls.bookingCode.errors?.['pattern']">Please enter a valid 6 characters alphabetic booking code.</small>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+    <div class="alert alert-success" *ngIf="successMessage">{{successMessage}}</div>
+      <div class="mb-3">
+          <div *ngIf="checkinForm.controls.bookingCode.invalid && checkinForm.controls.bookingCode.touched">
+              <small *ngIf="checkinForm.controls.bookingCode.errors?.['required']">Booking code is required</small>
+              <small *ngIf="checkinForm.controls.bookingCode.errors?.['pattern']">Please enter a valid 6 characters alphabetic booking code.</small>
+          </div> 
+        <label *ngIf="checkinForm.controls.bookingCode.errors === null || !checkinForm.controls.bookingCode.touched"  for="bookingCode" class="form-label"><span *transloco="let t" >{{t("bookingTitle")}}</span></label>
+        <input type="text" class="form-control" name="bookingCode" aria-describedby="bookingCode" formControlName="bookingCode"  [pattern]="bookingCodePattern">
+      </div>
+  
+      <div class="mb-3">
+          <div *ngIf="checkinForm.controls.lastName.invalid && checkinForm.controls.lastName.touched">
+              <small *ngIf="checkinForm.controls.lastName.errors?.['required']">Last name is required</small>
+              <small *ngIf="checkinForm.controls.lastName.errors?.['pattern']">Please enter a valid  last name.</small>
+          </div> 
+        <label *ngIf="checkinForm.controls.lastName.errors === null || !checkinForm.controls.lastName.touched" for="lastName" class="form-label"><span *transloco="let t" >{{t("familyTitle")}}</span></label>
+        <input type="text" class="form-control" name="lastName" formControlName="lastName"  [pattern]="lastNamePattern">
+      </div>
+  
+      <div class="mb-3">
+        <div *ngIf="checkinForm.controls.flightNumber.invalid && checkinForm.controls.flightNumber.touched">
+            <small *ngIf="checkinForm.controls.flightNumber.errors?.['required']">Flight nmber is required</small>
         </div> 
-      <label *ngIf="checkinForm.controls.bookingCode.errors === null || !checkinForm.controls.bookingCode.touched"  for="bookingCode" class="form-label"><span *transloco="let t" >{{t("bookingTitle")}}</span></label>
-      <input type="text" class="form-control" name="bookingCode" aria-describedby="bookingCode" formControlName="bookingCode"  [pattern]="bookingCodePattern">
+      <label *ngIf="checkinForm.controls.flightNumber.errors === null || !checkinForm.controls.lastName.touched" for="flightNumber" class="form-label"><span *transloco="let t" >{{t("flightNumber")}}</span></label>
+      <input type="text" class="form-control" name="flightNumber" formControlName="flightNumber">
     </div>
-
-    <div class="mb-3">
-        <div *ngIf="checkinForm.controls.lastName.invalid && checkinForm.controls.lastName.touched">
-            <small *ngIf="checkinForm.controls.lastName.errors?.['required']">Last name is required</small>
-            <small *ngIf="checkinForm.controls.lastName.errors?.['pattern']">Please enter a valid  last name.</small>
-        </div> 
-      <label *ngIf="checkinForm.controls.lastName.errors === null || !checkinForm.controls.lastName.touched" for="lastName" class="form-label"><span *transloco="let t" >{{t("familyTitle")}}</span></label>
-      <input type="text" class="form-control" name="lastName" formControlName="lastName"  [pattern]="lastNamePattern">
-    </div>
-
-    <div class="mb-3">
-      <div *ngIf="checkinForm.controls.flightNumber.invalid && checkinForm.controls.flightNumber.touched">
-          <small *ngIf="checkinForm.controls.flightNumber.errors?.['required']">Flight nmber is required</small>
-      </div> 
-    <label *ngIf="checkinForm.controls.flightNumber.errors === null || !checkinForm.controls.lastName.touched" for="flightNumber" class="form-label"><span *transloco="let t" >{{t("flightNumber")}}</span></label>
-    <input type="text" class="form-control" name="flightNumber" formControlName="flightNumber">
-  </div>
-
-
-    <button type="submit" class="btn btn-primary">Check in</button>
-  </form>
+  
+  
+      <button type="submit" class="btn btn-primary">Check in</button>
+    </form>
