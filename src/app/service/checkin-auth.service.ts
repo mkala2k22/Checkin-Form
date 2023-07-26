@@ -5,7 +5,7 @@ import { IcheckinData } from '../model/checkinData';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidatecheckinService {
+export class CheckinAuthService {
 
   apiurl='http://localhost:3000/checkin';
 
