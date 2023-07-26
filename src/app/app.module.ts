@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule} from '@angular/forms';
 
 import { HttpClientModule} from '@angular/common/http';
-import { CheckinformComponent } from './checkinform/checkinform.component';
+import { CheckinformComponent } from './checkin/checkin.component';
 import { TranslocoRootModule } from './transloco-root.module';
 
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { ApolloModule } from 'apollo-angular';
 import { GraphQLModule } from './graphql.module';
 
-import { CheckinComponent } from './checkin/checkin.component';
+
 
 
 
