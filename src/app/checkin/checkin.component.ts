@@ -5,11 +5,11 @@ import { Apollo } from 'apollo-angular';
 import { GET_BOOKINGCODES } from '../graphql/graphql.queries';
 
 @Component({
-  selector: 'app-checkinform',
-  templateUrl: './checkinform.component.html',
-  styleUrls: ['./checkinform.component.scss']
+  selector: 'app-checkin',
+  templateUrl: './checkin.component.html',
+  styleUrls: ['./checkin.component.scss']
 })
-export class CheckinformComponent {
+export class CheckinComponent {
 
 
   bookingCodePattern = "^[a-zA-Z0-9]{6}$";
