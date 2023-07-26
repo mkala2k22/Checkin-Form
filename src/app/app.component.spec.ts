@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { CheckinComponent } from './checkin/checkin.component';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TranslocoRootModule } from './transloco-root.module';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    imports: [RouterTestingModule, TranslocoRootModule, HttpClientTestingModule],
+    declarations: [AppComponent, LanguageSelectorComponent]
   }));
 
   it('should create the app', () => {
