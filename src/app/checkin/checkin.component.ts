@@ -7,7 +7,7 @@ import { GET_BOOKINGCODES } from '../graphql/graphql.queries';
 @Component({
   selector: 'app-checkinform',
   templateUrl: './checkinform.component.html',
-  styleUrls: ['./checkinform.component.css']
+  styleUrls: ['./checkinform.component.scss']
 })
 export class CheckinformComponent {
 
