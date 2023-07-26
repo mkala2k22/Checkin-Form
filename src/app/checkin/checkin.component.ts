@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ValidatecheckinService } from '../service/validatecheckin.service';
+import { CheckinAuthService } from '../service/checkin-auth.service';
 import { Apollo } from 'apollo-angular';
 import { GET_BOOKINGCODES } from '../graphql/graphql.queries';
 
@@ -20,7 +20,7 @@ export class CheckinformComponent {
   error: any;
 
 
-  constructor(private builder: FormBuilder, private validatecheckinService:ValidatecheckinService, private apollo: Apollo){}
+  constructor(private builder: FormBuilder, private checkinAuthService:CheckinAuthService, private apollo: Apollo){}
 
   checkinForm = this.builder.group({
     bookingCode: this.builder.control ('', Validators.compose([Validators.required])),
@@ -61,7 +61,7 @@ proceedCheckin() {
 
   proceedCheckin(){
     if (this.checkinForm.valid) {
-      this.validatecheckinService.authenticateCheckin(this.checkinForm.value).subscribe((res)=> {
+      this.checkinAuthService.authenticateCheckin(this.checkinForm.value).subscribe((res)=> {
         console.log('res',res);
         this.successMessage ='Checked in successfully';
       },(error) =>{
